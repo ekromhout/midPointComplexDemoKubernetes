@@ -6,7 +6,7 @@ The image contains the midPoint application along with some TIER-specific compon
 
 # Supported tags
 - latest
-- midPoint version-specific tags, e.g. 3.9, 3.9.1, 4.0, etc.
+- midPoint version-specific branches, e.g. 3.9, 3.9.1, 4.0, etc.
 
 # Content
 - the root directory contains build instructions for the `midpoint` image 
