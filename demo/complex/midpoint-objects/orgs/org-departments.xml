@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-    oid="bee44c51-2469-411d-bac7-695728e9c241">
-    <name>departments</name>
-    <displayName>Departments</displayName>
-</org>

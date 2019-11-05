@@ -304,7 +304,7 @@ function search_objects_by_name () {
 EOF
     local HTTP_CODE=$(sed '$!d' <<<"$(cat $TMPFILE)")
     sed -i '$ d' $TMPFILE
-    cat $TMPFILE
+    # cat $TMPFILE
 
     if [ "$HTTP_CODE" -eq 200 ]; then
         SEARCH_RESULT_FILE=$TMPFILE
@@ -418,6 +418,14 @@ function wait_for_task_completion () {
     return 1
 }
 
+function get_task_execution_status () {
+    local NAME=$1
+
+    search_objects_by_name tasks "$NAME"
+    TASK_EXECUTION_STATUS=$(xmllint --xpath "/*/*/*[local-name()='executionStatus']/text()" $SEARCH_RESULT_FILE) || (echo "Couldn't extract task status from task $NAME" ; cat $SEARCH_RESULT_FILE ; rm $SEARCH_RESULT_FILE ; return 1)
+    echo "Task execution status: $TASK_EXECUTION_STATUS"
+    return 0
+}
 
 function search_ldap_object_by_filter () {
     local BASE_CONTEXT_FOR_SEARCH=$1
@@ -555,4 +563,26 @@ function get_messages () {
 	return 1
     fi
     return 0
+}
+
+function upload_from_file () {
+  local FILENAME=$1
+  local OPTIONS_TO_ADD=$2
+  local REGEX="midpoint-objects.*/(.*)/(.*)"
+  if [[ $FILENAME =~ $REGEX ]]
+  then
+    TYPE="${BASH_REMATCH[1]}"
+    OID=`cat $FILENAME | sed -n 's:.*oid=\"\([A-Za-z0-9\-]*\)\".*:\1:p' | sed -n '1 p'`
+    echo "Uploading $FILENAME ($TYPE, $OID)"
+    curl -k --user administrator:5ecr3t -H "Content-Type: application/xml" -X PUT "https://localhost:8443/midpoint/ws/rest/$TYPE/$OID?options=overwrite$OPTIONS_TO_ADD" --data-binary @$FILENAME
+  else
+    echo "Skipping $FILENAME"
+  fi
+}
+
+function execute_gsh () {
+  local CONTAINER=$1
+  local FILE=$2
+  docker cp $FILE $CONTAINER:/tmp/
+  docker exec $CONTAINER bash -c "/opt/grouper/grouper.apiBinary/bin/gsh /tmp/$FILE"
 }

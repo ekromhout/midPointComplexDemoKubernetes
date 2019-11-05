@@ -21,7 +21,8 @@ case $AUTHENTICATION in
     echo "*** Starting httpd WITH Shibboleth support"
     set -e
     rm -f /etc/httpd/logs/httpd.pid
-    (/usr/sbin/shibd) & httpd -DFOREGROUND
+    export LD_LIBRARY_PATH=/opt/shibboleth/lib64:$LD_LIBRARY_PATH
+    (/usr/sbin/shibd -f) & httpd -DFOREGROUND
     ;;
   internal)
     echo "*** Starting httpd WITHOUT Shibboleth support"

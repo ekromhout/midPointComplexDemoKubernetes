@@ -6,16 +6,16 @@ if [[ -n "$1" ]]; then
   MP_VERSION=$1
 else
   if [[ $tag == "latest" ]]; then
-    MP_VERSION="4.0-SNAPSHOT"
+    MP_VERSION="4.0.1"
   else
     MP_VERSION=$tag
   fi
 fi
 
-if [[ $MP_VERSION =~ ^[0-9]+\.[0-9]+$ ]]; then
-  URL_BASE="https://download.evolveum.com/downloads/midpoint/$MP_VERSION/"
+if [[ $MP_VERSION =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
+  URL_BASE="https://download.evolveum.com/midpoint/$MP_VERSION/"
 else
-  URL_BASE="https://download.evolveum.com/downloads/midpoint-tier/"
+  URL_BASE="https://download.evolveum.com/midpoint-tier/"
 fi
 
 echo "Downloading midPoint $MP_VERSION from $URL_BASE"

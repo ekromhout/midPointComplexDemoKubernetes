@@ -2,7 +2,7 @@
 #  Building assumes midpoint-dist.tar.gz is present in the current directory.
 #
 
-FROM tier/shibboleth_sp
+FROM tier/shibboleth_sp:3.0.4_03122019
 
 MAINTAINER info@evolveum.com
 
@@ -10,7 +10,7 @@ RUN rpm --import http://repos.azulsystems.com/RPM-GPG-KEY-azulsystems
 RUN curl -o /etc/yum.repos.d/zulu.repo http://repos.azulsystems.com/rhel/zulu.repo
 RUN yum -y update
 RUN yum -y install \
- 	zulu-8 \
+ 	zulu-11 \
         cron \
         supervisor \
 	libcurl \
@@ -47,7 +47,7 @@ RUN cp /dev/null /etc/httpd/conf.d/ssl.conf \
 
 # Build arguments
 
-ARG MP_VERSION=4.0
+ARG MP_VERSION=4.0.1
 ARG MP_DIST_FILE=midpoint-dist.tar.gz
 
 ENV MP_DIR /opt/midpoint
@@ -60,7 +60,9 @@ COPY container_files/mp-dir/ ${MP_DIR}/
 RUN echo 'Extracting midPoint archive...' \
  && tar xzf ${MP_DIR}/${MP_DIST_FILE} -C ${MP_DIR} --strip-components=1
 
-VOLUME ${MP_DIR}/var
+# Disabled because of wider compatibility issues (e.g. AWS)
+# TODO: consider all the consequences
+#VOLUME ${MP_DIR}/var
 
 # Repository parameters
 
