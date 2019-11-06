@@ -7,7 +7,7 @@
   -->
 
 <objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" oid="8098b124-c20c-4965-8adf-e528abedf7a4">
-    <name>User Template</name>
+    <name>template-user</name>
     <mapping>
         <strength>strong</strength>
         <source>

@@ -61,7 +61,7 @@ pipeline {
                         sh '(cd demo/simple ; bats tests ) 2>&1 | tee -a debug ; test ${PIPESTATUS[0]} -eq 0'
                         sh '(cd demo/shibboleth ; bats tests ) 2>&1 | tee -a debug ; test ${PIPESTATUS[0]} -eq 0'
                         sh '(cd demo/postgresql ; bats tests ) 2>&1 | tee -a debug ; test ${PIPESTATUS[0]} -eq 0'
-                        //sh '(cd demo/complex ; bats tests ) 2>&1 | tee -a debug ; test ${PIPESTATUS[0]} -eq 0'
+                        sh '(cd demo/grouper ; bats tests ) 2>&1 | tee -a debug ; test ${PIPESTATUS[0]} -eq 0'
                     } catch (error) {
                         def error_details = readFile('./debug')
                         def message = "BUILD ERROR: There was a problem testing ${imagename}:${tag}. \n\n ${error_details}"

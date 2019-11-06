@@ -30,10 +30,10 @@ load ../common
     cd demo/postgresql ; docker-compose down -v ; true
 }
 
-#@test "130 Cleanup before further tests - demo/complex" {
-#    docker ps -a
-#    cd demo/complex ; docker-compose down -v ; true
-#}
+@test "130 Cleanup before further tests - demo/grouper" {
+    docker ps -a
+    cd demo/grouper ; docker-compose down -v ; true
+}
 
 # not much more to check here, as we cannot start midpoint container without having a repository
 # so continuing with tests in demo/plain directory
