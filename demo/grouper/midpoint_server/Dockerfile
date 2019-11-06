@@ -1,4 +1,4 @@
-FROM tier/midpoint:laboratory
+FROM tier/midpoint:latest
 
 MAINTAINER info@evolveum.com
 
