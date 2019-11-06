@@ -60,10 +60,6 @@
 			<type>c:AsyncUpdateMessageType</type>
 		</parameter>
 		<parameter>
-			<name>superGroup</name>
-			<type>xsd:string</type>
-		</parameter>
-		<parameter>
 			<name>groupIncludePattern</name>
 			<type>xsd:anyType</type>
 		</parameter>

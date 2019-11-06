@@ -32,8 +32,7 @@
             <rest:baseUrl>https://grouper-ws:443</rest:baseUrl>
             <rest:username>banderson</rest:username>
             <rest:password>password</rest:password>
-            <rest:superGroup>etc:midpointGroups</rest:superGroup>
-            <rest:groupIncludePattern>midpoint:.*</rest:groupIncludePattern>
+            <rest:superGroup>etc:sysadmingroup</rest:superGroup>		<!-- parameter name will be changed -->
             <rest:groupIncludePattern>app:.*</rest:groupIncludePattern>
             <rest:groupIncludePattern>test:.*</rest:groupIncludePattern>
             <rest:groupIncludePattern>ref:.*</rest:groupIncludePattern>
@@ -69,8 +68,7 @@
                         // ------------------ START OF CONFIGURATION ------------------
 
                         parameters = [
-                            superGroup: 'etc:midpointGroups',
-                            groupIncludePattern: [ 'midpoint:.*', 'app:.*', 'test:.*', 'ref:.*' ],
+                            groupIncludePattern: [ 'app:.*', 'test:.*', 'ref:.*' ],
                             groupExcludePattern: [ '.*_(includes|excludes|systemOfRecord|systemOfRecordAndIncludes)' ],
                             relevantSourceId: 'ldap'
                         ]

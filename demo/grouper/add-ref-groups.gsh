@@ -16,11 +16,6 @@ def addGroups(gs,stem,owner,regexp) {
 }
 
 gs = GrouperSession.startRootSession()
-def supergroup = GroupFinder.findByName(gs, "etc:midpointGroups", true)
 def cs = GroupFinder.findByName(gs, "app:cs", true)
-
-addGroups(gs, StemFinder.findByName(gs, 'ref:affiliation'), supergroup, null)
-addGroups(gs, StemFinder.findByName(gs, 'ref:dept'), supergroup, null)
-addGroups(gs, StemFinder.findByName(gs, 'ref:course'), supergroup, null)
 
 addGroups(gs, StemFinder.findByName(gs, 'ref:course'), cs, /CS.*/)
