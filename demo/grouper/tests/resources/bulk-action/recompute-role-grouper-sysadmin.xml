@@ -1,0 +1,16 @@
+<scext:executeScript xmlns:scext="http://midpoint.evolveum.com/xml/ns/public/model/scripting/extension-3"
+		     xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+		     xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
+                <s:search xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                    <s:type>c:RoleType</s:type>
+                    <s:searchFilter>
+                        <q:equal>
+                            <q:path>name</q:path>
+                            <q:value>role-grouper-sysadmin</q:value>
+                        </q:equal>
+                    </s:searchFilter>
+                    <s:action>
+                        <s:type>recompute</s:type>
+                    </s:action>
+                </s:search>
+            </scext:executeScript>

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ../../library.bash
+
+upload_from_file midpoint-objects-manual/tasks/task-async-update-grouper.xml

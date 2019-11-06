@@ -1,0 +1,64 @@
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3" 
+      xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" 
+      xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" 
+      xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+      xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" 
+      xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:ext="http://grouper-demo.tier.internet2.edu"
+      oid="3dab9a72-118b-4e40-a138-bb691c335eca">
+    <name>course</name>
+    <extension>
+        <ext:grouperNamePrefix>ref:course:</ext:grouperNamePrefix>
+        <ext:ldapRootDn>ou=Courses,ou=Groups,dc=internet2,dc=edu</ext:ldapRootDn>
+        <ext:midPointNamePrefix>course_</ext:midPointNamePrefix>
+        <ext:midPointDisplayNamePrefix>Course: </ext:midPointDisplayNamePrefix>
+    </extension>
+    <archetypePolicy>
+        <display>
+            <label>Course</label>
+            <pluralLabel>Courses</pluralLabel>
+            <icon>
+                <cssClass>fa fa-university</cssClass>
+                <color>teal</color>
+            </icon>
+        </display>
+    </archetypePolicy>
+    <assignment>
+        <targetRef oid="bcaec940-50c8-44bb-aa37-b2b5bb2d5b90" relation="org:default" type="c:RoleType" />     <!-- metarole-grouper-provided-group -->
+    </assignment>
+    <assignment>
+        <targetRef oid="8da46694-bd71-4e1e-bfd7-73865ae2ea9a" relation="org:default" type="c:RoleType" />     <!-- metarole-ldap-group -->
+    </assignment>
+    <inducement>
+        <targetRef oid="225e9360-0639-40ba-8a31-7f31bef067be" relation="org:default" type="c:OrgType" />     <!-- courses -->
+    </inducement>
+    <!-- Group-type-specific data -->
+    <inducement>
+        <construction>
+            <strength>weak</strength>
+            <resourceRef oid="a343fc2e-3954-4034-ba1a-2b72c21e577a" relation="org:default" type="c:ResourceType" />     <!-- CS CSV -->
+            <attribute>
+                <c:ref>ri:courses</c:ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <expression>
+                        <script>
+                            <code>assignmentPath[0].target.identifier</code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+        </construction>
+        <order>2</order>
+        <condition>
+            <expression>
+                <script>
+                    <code>assignmentPath[0].target.identifier?.startsWith('CS')</code>
+                </script>
+            </expression>
+        </condition>
+    </inducement>
+</archetype>

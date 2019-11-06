@@ -1,0 +1,20 @@
+<user xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+      xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" 
+      oid="a0c7c01e-c203-4777-9b21-27a4735da3ae">
+    <name>grouper-admin</name>
+    <assignment id="1">
+        <targetRef oid="d48ec05b-fffd-4262-acd3-d9ff63365b62" relation="org:default" type="c:RoleType">
+            <!-- role-grouper-sysadmin -->
+        </targetRef>
+    </assignment>
+    <fullName>Grouper admin</fullName>
+    <givenName>Grouper</givenName>
+    <familyName>Admin</familyName>
+    <credentials>
+        <password>
+            <value>password</value>
+        </password>
+    </credentials>
+</user>
+	

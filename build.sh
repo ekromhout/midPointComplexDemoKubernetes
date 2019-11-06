@@ -42,7 +42,7 @@ echo ""
 echo "$ cd" $(pwd)/demo/simple
 echo "$ docker-compose up"
 echo ""
-echo "(for complex demo)"
+echo "(for Grouper integration demo)"
 echo ""
-echo "$ cd" $(pwd)/demo/complex
+echo "$ cd" $(pwd)/demo/grouper
 echo "$ docker-compose up --build"

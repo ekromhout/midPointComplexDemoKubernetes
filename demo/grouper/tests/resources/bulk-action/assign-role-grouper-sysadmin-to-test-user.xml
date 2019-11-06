@@ -1,0 +1,22 @@
+<scext:executeScript xmlns:scext="http://midpoint.evolveum.com/xml/ns/public/model/scripting/extension-3">
+                <s:search xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3"
+   			  xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+			  xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         		  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <s:type>c:UserType</s:type>
+                    <s:searchFilter>
+                        <q:equal>
+                            <q:path>c:name</q:path>
+                            <q:value>TestUser240</q:value>
+                        </q:equal>
+                    </s:searchFilter>
+                    <s:action>
+                        <s:type>assign</s:type>
+                        <s:parameter>
+                            <s:name>role</s:name>
+							<c:value xsi:type="xsd:string">d48ec05b-fffd-4262-acd3-d9ff63365b62</c:value>
+                        </s:parameter>
+                    </s:action>
+                </s:search>
+            </scext:executeScript>
