@@ -115,13 +115,6 @@
 			</reaction>
 			<reaction>
 				<situation>unmatched</situation>
-<!-- TODO MidPoint Basics Training, LAB TODO: uncomment the following content -->
-<!--
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#deleteShadow</handlerUri>
-                </action>
--->
-<!-- TODO MidPoint Basics Training, LAB TODO: end of to-be-uncommented content -->
 			</reaction>
 		</objectSynchronization>
 	</synchronization>

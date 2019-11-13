@@ -49,4 +49,24 @@
             </expression>
         </condition>
     </inducement>
+<!-- TODO MidPoint Basics Training, LAB 4-6: uncomment the following content -->
+<!--
+    <inducement>
+    	<description>
+    	This inducement applies for Users assigned to an Org with the "affiliation" archetype.
+    	It will create an account in "Staff Portal" by assignment of "Staff Portal Basic Role"
+    	</description>
+		<targetRef oid="1620de52-0142-11ea-aa66-9fa873ad13ff" type="c:RoleType" />
+		<order>2</order>
+		<condition>
+			<description>only if the organization's identifier is 'staff'</description>
+			<expression>
+				<script>
+					<code>assignmentPath[0].target.identifier == 'staff'</code>
+				</script>
+			</expression>
+		</condition>
+	</inducement>
+-->
+<!-- TODO MidPoint Basics Training, LAB 4-6: end of to-be-uncommented content -->
 </archetype>
