@@ -1,0 +1,102 @@
+<!--
+  ~ Copyright (c) 2019 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
+<resource oid="fe805d13-481b-43ec-97d8-9d2df72cd38e" xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+	xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:my="http://myself.me/schemas/whatever"
+	xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3">
+
+	<name>Target: Mailing lists (CSV)</name>
+
+	<connectorRef type="ConnectorType">
+		<filter>
+			<q:equal>
+				<q:path>c:connectorType</q:path>
+				<q:value>com.evolveum.polygon.connector.csv.CsvConnector</q:value>
+			</q:equal>
+		</filter>
+	</connectorRef>
+
+	<connectorConfiguration xmlns:icfi="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-csv/com.evolveum.polygon.connector.csv.CsvConnector">
+					   
+		<icfc:configurationProperties>
+			<icfi:filePath>/opt/midpoint/var/mailing-lists.csv</icfi:filePath>
+			<icfi:encoding>utf-8</icfi:encoding>
+			<icfi:fieldDelimiter>,</icfi:fieldDelimiter>
+			<icfi:multivalueDelimiter>;</icfi:multivalueDelimiter>
+			<icfi:uniqueAttribute>uid</icfi:uniqueAttribute>
+		</icfc:configurationProperties>
+
+	</connectorConfiguration>
+	<schemaHandling>
+		<objectType>
+			<displayName>Default Account</displayName>
+			<default>true</default>
+			<objectClass>ri:AccountObjectClass</objectClass>
+			<attribute>
+				<ref>ri:uid</ref>
+				<outbound>
+                    <strength>strong</strength>
+					<source>
+						<path>name</path>
+					</source>
+				</outbound>
+			</attribute>
+			<attribute>
+				<ref>ri:mail</ref>
+				<outbound>
+                    <strength>strong</strength>
+					<source>
+						<path>emailAddress</path>
+					</source>
+				</outbound>
+			</attribute>
+            <attribute>
+                <ref>ri:lists</ref>
+                <limitations>
+                    <maxOccurs>unbounded</maxOccurs>
+                </limitations>
+                <tolerant>false</tolerant>
+                <!-- outbound is in metarole-mailing-list -->
+            </attribute>
+		</objectType>
+	</schemaHandling>
+	<synchronization>
+		<objectSynchronization>
+			<enabled>true</enabled>
+			<correlation>
+				<q:equal>
+					<q:path>name</q:path>
+					<expression>
+						<path>$projection/attributes/uid</path>
+					</expression>
+				</q:equal>
+			</correlation>
+			<reaction>
+				<situation>linked</situation>
+				<synchronize>true</synchronize>
+			</reaction>
+			<reaction>
+				<situation>deleted</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
+				</action>
+			</reaction>
+			<reaction>
+				<situation>unlinked</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+				</action>
+			</reaction>
+			<reaction>
+				<situation>unmatched</situation>
+			</reaction>
+		</objectSynchronization>
+	</synchronization>
+</resource>

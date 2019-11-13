@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- (c) 2019 Evolveum, All rights reserved -->
+
+<s:search xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
+        <s:type>ObjectType</s:type>
+        <s:searchFilter>
+            <q:inOid>
+                <q:value>d48ec05b-fffd-4262-acd3-d9ff63365b62</q:value>
+                <q:value>e897468f-20bd-419c-8fc5-1fe60e2600de</q:value>
+            </q:inOid>
+        </s:searchFilter>
+    <s:action>
+        <s:type>recompute</s:type>
+    </s:action>
+</s:search>

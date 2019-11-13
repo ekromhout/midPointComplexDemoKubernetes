@@ -1,0 +1,53 @@
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3" 
+      xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" 
+      xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" 
+      xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+      xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" 
+      xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:ext="http://grouper-demo.tier.internet2.edu"
+      oid="1cec5f78-8fba-459b-9547-ef7485009f40">
+    <name>department</name>
+    <extension>
+        <ext:grouperNamePrefix>ref:dept:</ext:grouperNamePrefix>
+        <ext:midPointNamePrefix>department_</ext:midPointNamePrefix>
+        <ext:midPointDisplayNamePrefix>Department: </ext:midPointDisplayNamePrefix>
+    </extension>
+    <archetypePolicy>
+        <display>
+            <label>Department</label>
+            <pluralLabel>Departments</pluralLabel>
+            <icon>
+                <cssClass>fa fa-building</cssClass>
+                <color>darkgreen</color>
+            </icon>
+        </display>
+    </archetypePolicy>
+    <assignment>
+        <targetRef oid="bcaec940-50c8-44bb-aa37-b2b5bb2d5b90" relation="org:default" type="c:RoleType" />     <!-- metarole-grouper-provided-group -->
+    </assignment>
+    <!--  No LDAP metarole here: we deal with LDAP ourselves -->
+    <inducement>
+        <targetRef oid="bee44c51-2469-411d-bac7-695728e9c241" relation="org:default" type="c:OrgType" />     <!-- departments -->
+    </inducement>
+    <!-- Group-type-specific data -->
+    <inducement>
+        <construction>
+            <resourceRef oid="0a37121f-d515-4a23-9b6d-554c5ef61272" relation="org:default" type="c:ResourceType" />     <!-- LDAP -->
+            <attribute>
+                <ref>ri:businessCategory</ref>
+                <outbound>
+                    <strength>strong</strength>
+                    <expression>
+                        <script>
+                            <code>assignmentPath[0].target.identifier</code>
+                        </script>
+                    </expression>
+                </outbound>
+            </attribute>
+        </construction>
+        <order>2</order>
+    </inducement>
+</archetype>

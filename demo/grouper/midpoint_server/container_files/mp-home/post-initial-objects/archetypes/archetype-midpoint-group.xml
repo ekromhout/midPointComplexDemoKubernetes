@@ -1,0 +1,32 @@
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3" 
+      xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+      xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" 
+      xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" 
+      xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+      xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" 
+      xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:ext="http://grouper-demo.tier.internet2.edu"
+      oid="2be36917-71ad-4c3e-8789-89cadea2d5d6">
+    <name>midpoint-group</name>
+    <extension>
+        <ext:ldapRootDn>ou=midpoint,ou=Groups,dc=internet2,dc=edu</ext:ldapRootDn>
+    </extension>
+    <archetypePolicy>
+        <display>
+            <label>midPoint Group</label>
+            <pluralLabel>midPoint Groups</pluralLabel>
+            <icon>
+                <cssClass>fa fa-users</cssClass>
+                <color>darkgviolet</color>
+            </icon>
+        </display>
+    </archetypePolicy>
+    <assignment>
+        <targetRef oid="8da46694-bd71-4e1e-bfd7-73865ae2ea9a" relation="org:default" type="c:RoleType" />     <!-- metarole-ldap-group -->
+    </assignment>
+    <inducement>
+        <targetRef oid="4790ab69-7ef0-41a4-8992-78877f3beb23" relation="org:default" type="c:OrgType" />     <!-- midpoint-groups -->
+    </inducement>
+</archetype>
