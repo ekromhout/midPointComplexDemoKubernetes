@@ -11,7 +11,13 @@ declare -a fileList=(
 "idp/shibboleth-idp/metadata/midpoint-sp-new.xml"
 )
 
-echo "Directory: $1";
+if [ $# -eq 0 ]
+then
+    echo 'Please specify a directory as the first argument (e.g. ".")'
+    exit
+fi
+
+echo "Working in directory: $1";
 for f in "${fileList[@]}"
 do
     echo "Replacing in: $1/$f..."
