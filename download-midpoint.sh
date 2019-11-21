@@ -6,7 +6,11 @@ if [[ -n "$1" ]]; then
   MP_VERSION=$1
 else
   if [[ $tag == "latest" ]]; then
-    MP_VERSION="4.0.1"
+    # Was: 4.0.1
+    #
+    # But we need to incorporate latest changes to I2 distribution during
+    # the development of 4.1. Therefore we use a custom build here.
+    MP_VERSION="latest-stable"
   else
     MP_VERSION=$tag
   fi
