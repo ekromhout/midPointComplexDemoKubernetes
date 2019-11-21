@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype oid="9ea701a0-fefb-11e9-aa4a-6f55fba8896e"
+        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+        xmlns:org='http://midpoint.evolveum.com/xml/ns/public/common/org-3'>
+    <name>Non-academic</name>
+    <description>Non-academic person with no relation to the academy environment</description>
+    <archetypePolicy>
+    	<display>
+    		<label>Non-academic</label>
+		<pluralLabel>Non-academics</pluralLabel>
+    		<tooltip>Non-academic persons</tooltip>
+    		<icon>
+    			<cssClass>fa fa-space-shuttle</cssClass>
+    			<color>olive</color>
+    		</icon>
+    	</display>
+    </archetypePolicy>
+    <assignment>
+    	<assignmentRelation>
+    		<holderType>UserType</holderType>
+    	</assignmentRelation>
+    </assignment>
+</archetype>

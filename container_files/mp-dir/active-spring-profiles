@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case $AUTHENTICATION in
+  shibboleth)
+    echo "default,sso"
+    ;;
+  internal)
+    echo "default"
+    ;;
+  *)
+    echo "default"
+esac
+

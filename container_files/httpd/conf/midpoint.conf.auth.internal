@@ -1,0 +1,6 @@
+
+Timeout 2400
+ProxyTimeout 2400
+ProxyBadHeader Ignore
+
+ProxyPass /midpoint ajp://localhost:9090/midpoint  timeout=2400 retry=0

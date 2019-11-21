@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype oid="958da09c-fefb-11e9-892d-975972472527"
+        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+        xmlns:org='http://midpoint.evolveum.com/xml/ns/public/common/org-3'>
+    <name>Academic</name>
+    <description>Person with a relation to the academy environment</description>
+    <archetypePolicy>
+    	<display>
+    		<label>Academic</label>
+    		<pluralLabel>Academics</pluralLabel>
+    		<tooltip>Academic person</tooltip>
+    		<icon>
+    			<cssClass>fa fa-user</cssClass>
+    			<color>darkgreen</color>
+    		</icon>
+    	</display>
+    </archetypePolicy>
+    <assignment>
+    	<assignmentRelation>
+    		<holderType>UserType</holderType>
+    	</assignmentRelation>
+    </assignment>
+</archetype>

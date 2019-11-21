@@ -1,0 +1,1 @@
+docker exec grouper_mq_1 rabbitmqctl purge_queue sampleQueue

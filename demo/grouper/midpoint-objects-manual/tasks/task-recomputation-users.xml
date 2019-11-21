@@ -1,0 +1,25 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="83a737ea-5eb7-4e78-b431-331cccf02354">
+    <name>User recomputing with bucket</name>
+    <extension xmlns:mext="http://midpoint.evolveum.com/xml/ns/public/model/extension-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ExtensionType">
+        <mext:objectType>c:UserType</mext:objectType>
+        <mext:tracingInterval>200</mext:tracingInterval>
+    </extension>
+    <taskIdentifier>1571729899646-0-1</taskIdentifier>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType">
+        <!-- administrator -->
+    </ownerRef>
+    <channel>http://midpoint.evolveum.com/xml/ns/public/provisioning/channels-3#recompute</channel>
+    <executionStatus>runnable</executionStatus>
+    <category>Recomputation</category>
+    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/synchronization/task/recompute/handler-3</handlerUri>
+    <workManagement>
+        <taskKind>standalone</taskKind>
+        <buckets>
+            <oidSegmentation>
+                <depth>2</depth>
+            </oidSegmentation>
+        </buckets>
+    </workManagement>
+    <recurrence>single</recurrence>
+    <binding>tight</binding>
+</task>

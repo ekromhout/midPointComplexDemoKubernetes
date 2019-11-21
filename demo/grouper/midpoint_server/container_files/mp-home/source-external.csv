@@ -1,0 +1,5 @@
+uid,firstname,lastname,department,mail,validFrom,validTo
+ext.jsmith,John,Smith,External,xjsmith@example.com,2018-01-01,9999-12-31
+ext.aanderson,Alice,Anderson,External,xaanderson@example.com,2016-03-15,9999-12-31
+ext.ejohnson,Ellen,Johnson,External,xejohnson@example.com,2019-10-01,2019-12-31
+ext.rvasquez,Ron,Vasquez,External,xrvasquez@example.com,2019-01-01,2019-10-31

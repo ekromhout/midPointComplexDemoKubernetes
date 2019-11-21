@@ -1,0 +1,24 @@
+dn: cn=admin,dc=internet2,dc=edu
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+userPassword: password
+description: LDAP administrator
+
+dn: cn=users,ou=Groups,dc=internet2,dc=edu
+objectClass: groupOfUniqueNames
+objectClass: top
+uniqueMember: uid=banderson,ou=People,dc=internet2,dc=edu
+uniqueMember: uid=jsmith,ou=People,dc=internet2,dc=edu
+cn: users
+
+dn: uid=administrator,ou=People,dc=internet2,dc=edu
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetOrgPerson
+givenName: Administrator
+uid: administrator
+sn: Administrator
+cn: Administrator
+userPassword: password

@@ -1,0 +1,16 @@
+<!--
+  ~ Copyright (c) 2019 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
+<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+      oid="d48ec05b-fffd-4262-acd3-d9ff63365b62">
+    <name>org-grouper-sysadmin</name>
+    <displayName>Grouper Administrators</displayName>
+    <assignment id="1">
+        <targetRef oid="2be36917-71ad-4c3e-8789-89cadea2d5d6" type="ArchetypeType"/>         <!--  archetype midpoint-group -->
+    </assignment>
+    <identifier>sysadmingroup</identifier>
+</org>

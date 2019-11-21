@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<s:search xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
+    <s:type>c:ResourceType</s:type>
+        <s:searchFilter>
+            <q:inOid>
+                <q:value>0a37121f-d515-4a23-9b6d-554c5ef61272</q:value>
+                <q:value>4d70a0da-02dd-41cf-b0a1-00e75d3eaa15</q:value>
+                <q:value>a343fc2e-3954-4034-ba1a-2b72c21e577a</q:value>
+                <q:value>e417225d-8a08-46f3-9b5d-624990b52386</q:value>
+                <q:value>fe805d13-481b-43ec-97d8-9d2df72cd38e</q:value>
+                <q:value>1eff65de-5bb6-483d-9edf-8cc2c2ee0233</q:value>
+            </q:inOid>
+        </s:searchFilter>
+    <s:action>
+    <!-- XXX we test ALL resources here. Maybe we can just skip the query -->
+        <s:type>test-resource</s:type>
+    </s:action>
+</s:search>

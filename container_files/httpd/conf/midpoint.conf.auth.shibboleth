@@ -1,0 +1,21 @@
+
+Timeout 2400
+ProxyTimeout 2400
+ProxyBadHeader Ignore
+
+ProxyPass /midpoint ajp://localhost:9090/midpoint  timeout=2400 retry=0
+
+<Location /midpoint>
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  ShibRequireSession on
+  ShibUseHeaders On
+  require shibboleth
+</Location>
+
+<Location ~ "/midpoint/(actuator/health|js/*|css/*|img/*|less/*|fonts/*|model/*|ws/*|rest/*|report/*|wro/*|static-web/*|wicket/resource/*)">
+  Satisfy Any
+  Allow from all
+  AuthType None
+  Require all granted
+</Location>
