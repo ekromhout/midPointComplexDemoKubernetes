@@ -4,6 +4,11 @@ services:
   grouper_daemon:
     build: ./grouper_daemon/
     command: bash -c "while ! curl -s grouper_data:3306 > /dev/null; do echo waiting for mysql on grouper_data to start; sleep 3; done; while ! curl -s ldap://directory:389 > /dev/null; do echo waiting for ldap on directory to start; sleep 3; done; /usr/local/bin/startup.sh"
+    healthcheck:
+      test: curl -s grouper_data:3306
+      interval: 30s
+      timeout: 30s
+      retries: 3
     depends_on:
      - grouper_data
      - directory
@@ -138,6 +143,11 @@ services:
          - grouper-data
     ports:
      - 3306:3306
+    healthcheck:
+      test: curl -s grouper_data:3306
+      interval: 30s
+      timeout: 30s
+      retries: 3
     volumes:
      - grouper_data:/var/lib/mysql  
 

@@ -1,0 +1,20 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'grouper-ui-claim0'
+    path: '/opt/grouper/conf'
+  - name: 'grouper-ui-claim1'
+    path: '/etc/shibboleth'
+  - name: 'grouper-ui-claim2'
+    path: '/etc/pki/tls/certs'
+  args: [ 'build', '-t', 'gcr.io/rcgrant-kromhout-test/grouper_daemon', 'grouper_data' ]
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'grouper-ui-claim0'
+    path: '/opt/grouper/conf'
+  - name: 'grouper-ui-claim1'
+    path: '/etc/shibboleth'
+  - name: 'grouper-ui-claim2'
+    path: '/etc/pki/tls/certs'
+images:
+- 'gcr.io/rcgrant-kromhout-test/grouper_data'

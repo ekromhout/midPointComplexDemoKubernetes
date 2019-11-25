@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'grouper-data2'
+    path: '/var/lib/mysql'
+  args: [ 'build', '-t', 'gcr.io/rcgrant-kromhout-test/grouper_grouper_data2', 'grouper_data2' ]
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'grouper-data2'
+    path: '/var/lib/mysql'
+images:
+- 'gcr.io/rcgrant-kromhout-test/grouper_grouper_data2'

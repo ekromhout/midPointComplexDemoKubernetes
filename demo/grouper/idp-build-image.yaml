@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'ldap'
+    path: '/var/lib/dirsrv'
+  args: [ 'build', '-t', 'gcr.io/rcgrant-kromhout-test/grouper_daemon', 'grouper_data' ]
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'ldap'
+    path: '/var/lib/dirsrv'
+images:
+- 'gcr.io/rcgrant-kromhout-test/grouper_data'

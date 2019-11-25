@@ -1,0 +1,28 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: grouper-ws-load-data
+  labels:
+    app: grouper-ws-loader
+spec:
+  volumes:
+    - name: grouper-ws-claim0
+      persistentVolumeClaim:
+        claimName: grouper-ws-claim0
+    - name: grouper-ws-claim1
+      persistentVolumeClaim:
+        claimName: grouper-ws-claim1
+    - name: grouper-ws-claim2
+      persistentVolumeClaim:
+        claimName: grouper-ws-claim2
+  containers:
+    - name: grouper-ws-load-data
+      image: ubuntu
+      volumeMounts:
+      - name: grouper-ws-claim0
+        mountPath: /opt/grouper/conf
+      - name: grouper-ws-claim1
+        mountPath: /etc/shibboleth
+      - name: grouper-ws-claim2
+        mountPath: /etc/pki/tls/certs
+      command: ["/bin/bash", "-ecx", "while :; do printf '.'; sleep 5 ; done"]

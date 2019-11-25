@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.7.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: grouper-ui
+  name: grouper-ui
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 35.232.114.145
+  selector:
+    app: grouper-ui
+  ports:
+  - name: "4443"
+    port: 4443
+    targetPort: 443
+  selector:
+    io.kompose.service: grouper-ui
+status:
+  loadBalancer: {}

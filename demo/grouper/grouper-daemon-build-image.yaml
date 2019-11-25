@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'grouper-daemon-claim0'
+    path: '/opt/grouper/conf'
+  args: [ 'build', '-t', 'gcr.io/rcgrant-kromhout-test/grouper_daemon', 'grouper_daemon' ]
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'grouper-daemon-claim0'
+    path: '/opt/grouper/conf'
+images:
+- 'gcr.io/rcgrant-kromhout-test/grouper_daemon'

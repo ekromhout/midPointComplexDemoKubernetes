@@ -12,7 +12,7 @@ COPY container_files/conf/ /opt/grouper/grouper.apiBinary/conf/
 
 RUN ln -s /usr/bin/resolveip /usr/libexec/resolveip
 
-RUN mysql_install_db \
+RUN mysql_install_db --force \
     && chown -R mysql:mysql /var/lib/mysql/ \
     && sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/my.cnf \
     && sed -i 's/^\(log_error\s.*\)/# \1/' /etc/my.cnf \
